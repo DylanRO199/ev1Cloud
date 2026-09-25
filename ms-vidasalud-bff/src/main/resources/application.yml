@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ms-vidasalud-bff
+
+security:
+  jwt:
+    issuer-uri: https://login.microsoftonline.com/${ENTRA_TENANT_ID:d6edb470-bae6-41a0-b8c5-c2f55613b833}/v2.0
+    audience: api://${ENTRA_API_CLIENT_ID:2590960d-413c-42a8-a1c7-fc1289f4fb44}
+
+services:
+  appointments:
+    base-url: ${APPOINTMENTS_URL:http://localhost:8081}
+  catalog:
+    base-url: ${CATALOG_URL:http://localhost:8082}
+
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

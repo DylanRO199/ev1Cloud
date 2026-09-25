@@ -1,0 +1,94 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #17324d;
+  background: #f4f7fb;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #f4f7fb; }
+body { min-height: 100vh; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.page {
+  padding: 32px 0 48px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.page-header h1 { margin: 0 0 6px; font-size: 30px; }
+.page-header p { margin: 0; color: #64748b; }
+
+.card {
+  background: #fff;
+  border: 1px solid #dbe4ef;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(15, 45, 75, 0.06);
+}
+
+.btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 700;
+}
+.btn-primary { background: #0d6efd; color: white; }
+.btn-primary:hover { background: #0b5ed7; }
+.btn-secondary { background: #e8eef5; color: #25445f; }
+.btn-danger { background: #fee2e2; color: #b91c1c; }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+
+.form-field { display: grid; gap: 7px; }
+.form-field label { font-size: 13px; font-weight: 700; color: #38546d; }
+.form-control {
+  width: 100%;
+  border: 1px solid #cbd8e6;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #17324d;
+  outline: none;
+}
+.form-control:focus { border-color: #4f9cff; box-shadow: 0 0 0 3px rgba(13, 110, 253, .12); }
+
+.alert {
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+.alert-error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+.alert-success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  background: #e8eef5;
+  color: #38546d;
+}
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 13px 14px; text-align: left; border-bottom: 1px solid #e6edf5; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: #64748b; }
+tbody tr:hover { background: #f8fbff; }
+
+@media (max-width: 760px) {
+  .page-header { flex-direction: column; }
+}

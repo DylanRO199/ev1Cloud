@@ -1,0 +1,28 @@
+services:
+  catalog:
+    image: vidasalud/catalog:1.0.0
+    environment:
+      SPRING_PROFILES_ACTIVE: cloud
+      DB_URL: ${CATALOG_DB_URL}
+      DB_USER: ${CATALOG_DB_USER}
+      DB_PASSWORD: ${CATALOG_DB_PASSWORD}
+
+  appointments:
+    image: vidasalud/appointments:1.0.0
+    environment:
+      SPRING_PROFILES_ACTIVE: cloud
+      DB_URL: ${APPOINTMENTS_DB_URL}
+      DB_USER: ${APPOINTMENTS_DB_USER}
+      DB_PASSWORD: ${APPOINTMENTS_DB_PASSWORD}
+      CATALOG_URL: http://catalog:8082
+
+  bff:
+    image: vidasalud/bff:1.0.0
+    environment:
+      ENTRA_TENANT_ID: ${ENTRA_TENANT_ID}
+      ENTRA_API_CLIENT_ID: ${ENTRA_API_CLIENT_ID}
+      APPOINTMENTS_URL: http://appointments:8081
+      CATALOG_URL: http://catalog:8082
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS}
+    ports:
+      - "8080:8080"

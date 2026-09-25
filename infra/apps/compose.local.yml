@@ -1,0 +1,31 @@
+services:
+  catalog:
+    build: ../../ms-vidasalud-catalog
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+
+  appointments:
+    build: ../../ms-vidasalud-appointments
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+      CATALOG_URL: http://catalog:8082
+    depends_on:
+      - catalog
+
+  bff:
+    build: ../../ms-vidasalud-bff
+    ports:
+      - "8080:8080"
+    environment:
+      ENTRA_TENANT_ID: REPLACE_TENANT_ID
+      ENTRA_API_CLIENT_ID: REPLACE_API_CLIENT_ID
+      APPOINTMENTS_URL: http://appointments:8081
+      CATALOG_URL: http://catalog:8082
+      CORS_ALLOWED_ORIGINS: http://localhost:4200
+    depends_on:
+      - appointments
+      - catalog
