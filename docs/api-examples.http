@@ -1,0 +1,17 @@
+### Catálogo - prestaciones
+GET http://localhost:8082/api/catalog/services
+
+### Catálogo - boxes
+GET http://localhost:8082/api/catalog/boxes
+
+### Crear atención directamente en el microservicio para prueba local
+POST http://localhost:8081/api/appointments
+Content-Type: application/json
+
+{
+  "patientId": "patient-local",
+  "patientName": "Paciente Local",
+  "patientEmail": "paciente@vidasalud.cl",
+  "serviceId": 1,
+  "scheduledAt": "2027-01-15T10:30:00-03:00"
+}
